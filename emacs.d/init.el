@@ -1,8 +1,20 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/colortheme"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/confluence"))
+(load-file (expand-file-name "~/.emacs.d/jdee.el"))
+(load-file (expand-file-name "~/.emacs.d/myvc.el"))
+(load-file (expand-file-name "~/.emacs.d/mytramp.el"))
+
+(set-background-color "black")
+(set-face-background 'region "black")
+(set-face-foreground 'default "white")
+(set-face-foreground 'region "gray60")
+(set-foreground-color "white")
 
 (when (fboundp 'global-font-lock-mode)
   (global-font-lock-mode t))
+
+(set-default 'indent-tabs-mode nil)
 
 (put 'set-goal-column 'disabled nil)
 (put 'upcase-region 'disabled nil)
@@ -43,17 +55,15 @@
     (color-theme-initialize)
     (color-theme-mine)))
 
-(add-hook 'dired-load-hook
-          (function (lambda ()
-                      (load "dired-x")
-                      )))
-(add-hook 'dired-mode-hook 'my-dired-mode-hook)
+(defun my-dired-load-hook ()
+  (require 'dired-x))
+(add-hook 'dired-load-hook 'my-dired-load-hook)
 
 (defun my-dired-mode-hook ()
-  (if (< 22 emacs-major-version)
-      (dired-omit-mode 't))
-  (define-key dired-mode-map "\C-k" 'dired-kill-subdir)
-  )
+  (if (not (featurep 'dired-x)) (require 'dired-x))
+  (dired-omit-mode 't)
+  (define-key dired-mode-map "\C-k" 'dired-kill-subdir))
+(add-hook 'dired-mode-hook 'my-dired-mode-hook)
 
 ;; only delete the selection on a delete command
 (require 'delsel)
@@ -67,3 +77,25 @@
     (put 'newline-and-indent 'delete-selection nil)
     (put 'newline 'delete-selection nil)
     (put 'open-line 'delete-selection nil)))
+
+;; confluence editing support
+(autoload 'confluence-get-page "confluence" nil t)
+
+;; open confluence page
+(global-set-key "\C-xwf" 'confluence-get-page)
+
+(eval-after-load "confluence"
+  '(progn
+     (require 'longlines)
+     (progn
+       (add-hook 'confluence-mode-hook 'longlines-mode)
+       (add-hook 'confluence-before-save-hook 'longlines-before-revert-hook)
+       (add-hook 'confluence-before-revert-hook 'longlines-before-revert-hook)
+       (add-hook 'confluence-mode-hook '(lambda () (local-set-key "\C-j" 'confluence-newline-and-indent)))
+       (setq confluence-default-space-alist (list (cons confluence-url "sas"))
+             confluence-url "http://wiki.orbitz.net/rpc/xmlrpc"))))
+
+;; setup confluence mode
+(add-hook 'confluence-mode-hook
+          '(lambda ()
+             (local-set-key "\C-xw" confluence-prefix-map)))
