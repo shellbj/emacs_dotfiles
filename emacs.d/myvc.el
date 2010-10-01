@@ -1,1 +1,1 @@
-(require 'vc-accurev)
+(require 'vc-accurev nil t)
