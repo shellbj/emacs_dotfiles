@@ -1,4 +1,5 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/jde/lisp"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/jdee-extra"))
 
 (autoload 'jde-mode "jde" "JDE mode." t)
 
