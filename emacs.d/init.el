@@ -1,6 +1,8 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/colortheme"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/confluence"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/python-extra"))
+
 (load-file (expand-file-name "~/.emacs.d/jdee.el"))
 (load-file (expand-file-name "~/.emacs.d/myvc.el"))
 (load-file (expand-file-name "~/.emacs.d/mytramp.el"))
