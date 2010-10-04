@@ -1,5 +1,6 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/jde/lisp"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/jdee-extra"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/cedet"))
 
 (autoload 'jde-mode "jde" "JDE mode." t)
 (autoload 'semantic-mode "semantic" "Semantic mode." t)
@@ -15,6 +16,10 @@
                                              ("1.3" . "/usr/local/java/jdk1.3"))))
      (set-default 'jde-jdk (quote ("1.6")))
      (setq semantic-new-buffer-setup-functions (append '((jde-mode . wisent-java-default-setup)) semantic-new-buffer-setup-functions))))
+
+(eval-after-load 'jde-javadoc
+  '(progn
+     (require 'working nil t)))
 
 (eval-after-load 'jde-complete
   '(progn
