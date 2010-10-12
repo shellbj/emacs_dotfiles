@@ -101,3 +101,8 @@
 (add-hook 'confluence-mode-hook
           '(lambda ()
              (local-set-key "\C-xw" confluence-prefix-map)))
+
+;; robot-mode
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/robot-mode"))
+(autoload 'robot-mode "robot-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.tsv\\'" . robot-mode))
