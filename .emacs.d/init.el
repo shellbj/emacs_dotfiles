@@ -45,11 +45,7 @@
 (add-to-list 'backup-directory-alist (cons tramp-file-name-regexp nil))
 (add-to-list 'backup-directory-alist (cons "." "~/.emacs.d/backups/"))
 
-(require 'color-theme)
-(eval-after-load "color-theme"
-  (progn
-    (color-theme-initialize)
-    (color-theme-mine)))
+(require 'my "my-theme")
 
 (defun my-dired-load-hook ()
   (require 'dired-x))
