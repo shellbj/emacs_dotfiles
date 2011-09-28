@@ -24,7 +24,7 @@
  transient-mark-mode t ;; enable visual feedback on selections
  blink-cursor-mode nil
  column-number-mode t
- c-basic-offset 2
+ c-basic-offset 4
  mouse-yank-at-point t
  inhibit-startup-message t
  backup-by-copying-when-linked t
