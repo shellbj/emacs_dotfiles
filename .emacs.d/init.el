@@ -69,6 +69,12 @@
     (put 'newline 'delete-selection nil)
     (put 'open-line 'delete-selection nil)))
 
+;; package archives
+(eval-after-load "package"
+  '(progn
+     (add-to-list 'package-archives '("ELPA" . "http://tromey.com/elpa/"))
+     (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))))
+
 ;; confluence editing support
 (autoload 'confluence-get-page "confluence" nil t)
 
