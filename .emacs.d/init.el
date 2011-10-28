@@ -22,6 +22,8 @@
 (put 'erase-buffer 'disabled nil)
 (put 'dired-find-alternate-file 'disabled nil)
 
+(fset 'yes-or-no-p 'y-or-n-p)
+
 (setq
  transient-mark-mode t ;; enable visual feedback on selections
  blink-cursor-mode nil
