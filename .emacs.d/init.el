@@ -11,6 +11,9 @@
 
 (set-default 'indent-tabs-mode nil)
 
+(show-paren-mode t)
+(setq show-paren-style 'parentheses)
+
 (put 'set-goal-column 'disabled nil)
 (put 'upcase-region 'disabled nil)
 (put 'scroll-left 'disabled nil)
