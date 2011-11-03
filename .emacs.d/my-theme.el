@@ -3,9 +3,9 @@
 (custom-theme-set-faces
  'my
  '(default ((((type tty))
-             (:foreground "white" :background "black"))
+             (:foreground "white" :background "black" :height 120 :width normal :family "Mono"))
             (t
-             (:foreground "#fdfdfd" :background "black"))))
+             (:foreground "#fdfdfd" :background "black" :height 120 :width normal :family "Mono"))))
  '(cursor ((t (:foreground "black" :background "medium turquoise"))))
  '(highlight ((t (:foreground "white" :background "dark green"))))
  '(region ((t (:background "darkslateblue" :foreground "white"))))
