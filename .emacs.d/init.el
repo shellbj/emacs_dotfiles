@@ -1,6 +1,7 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/confluence"))
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/python-extra"))
+(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/groovy-emacs-mode"))
 
 (load-file (expand-file-name "~/.emacs.d/jdee.el"))
 (load-file (expand-file-name "~/.emacs.d/myvc.el"))
@@ -106,3 +107,23 @@
 (add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/robot-mode"))
 (autoload 'robot-mode "robot-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.tsv\\'" . robot-mode))
+
+;; groovy-mode
+(autoload 'groovy-mode "groovy-mode" "Groovy mode." t)
+(add-to-list 'auto-mode-alist '("\\.groovy\\'" . groovy-mode))
+(add-to-list 'interpreter-mode-alist '("groovy" . groovy-mode))
+
+;; inferior groovy mode
+(autoload 'run-groovy "inf-groovy" "Run an inferior Groovy process")
+(autoload 'inf-groovy-keys "inf-groovy" "Set local key defs for inf-groovy in groovy-mode")
+(eval-after-load "groovy-mode"
+  '(progn
+     (add-hook 'groovy-mode-hook '(lambda () (inf-groovy-keys)))))
+
+;; grails mode
+(autoload 'grails-mode "grails-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.gsp\\'" . groovy-mode))
+
+;; gradle support from groovy-mode
+(add-to-list 'auto-mode-alist '("\\.gradle" . groovy-mode))
+(add-to-list 'interpreter-mode-alist '("gradle" . groovy-mode))
