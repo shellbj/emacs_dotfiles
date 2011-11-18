@@ -127,3 +127,6 @@
 ;; gradle support from groovy-mode
 (add-to-list 'auto-mode-alist '("\\.gradle" . groovy-mode))
 (add-to-list 'interpreter-mode-alist '("gradle" . groovy-mode))
+
+;; zsh automode
+(add-to-list 'auto-mode-alist '("\\.zsh" . sh-mode))
