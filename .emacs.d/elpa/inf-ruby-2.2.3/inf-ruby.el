@@ -6,8 +6,7 @@
 ;; URL: http://github.com/nonsequitur/inf-ruby
 ;; Created: 8 April 1998
 ;; Keywords: languages ruby
-;; Version: 2.2.1
-;; Package-Requires: ((ruby-mode "1.1"))
+;; Version: 2.2.3
 
 ;;; Commentary:
 ;;
@@ -335,12 +334,12 @@ Then switch to the process buffer."
   (let* ((proc (get-buffer-process inf-ruby-buffer))
 	 (comint-filt (process-filter proc))
 	 (kept "") completions)
-    (set-process-filter proc (lambda (proc string) (setf kept (concat kept string))))
+    (set-process-filter proc (lambda (proc string) (setq kept (concat kept string))))
     (process-send-string proc (format "puts IRB::InputCompletor::CompletionProc.call('%s').compact\n"
                                       (ruby-escape-single-quoted seed)))
     (while (and (not (string-match inf-ruby-prompt-pattern kept))
                 (accept-process-output proc 2)))
-    (setf completions (cdr (butlast (split-string kept "\r?\n") 2)))
+    (setq completions (cdr (butlast (split-string kept "\r?\n") 2)))
     (set-process-filter proc comint-filt)
     completions))
 
@@ -348,11 +347,11 @@ Then switch to the process buffer."
   (if inf-ruby-at-top-level-prompt-p
       (let* ((curr (replace-regexp-in-string "\n$" "" (thing-at-point 'line)))
              (completions (inf-ruby-completions curr)))
-        (case (length completions)
-          (0 nil)
-          (1 (car completions))
-          (t (completing-read "possible completions: "
-                              completions nil t curr))))
+        (if completions
+            (if (= (length completions) 1)
+                (car completions)
+              (completing-read "possible completions: "
+                               completions nil t curr))))
     (message "Completion aborted: Not at a top-level prompt")
     nil))
 
