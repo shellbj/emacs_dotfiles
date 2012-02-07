@@ -4,21 +4,21 @@
 
 
 ;;;### (autoloads (flymake-ruby-load) "flymake-ruby" "flymake-ruby.el"
-;;;;;;  (20120 24669))
+;;;;;;  (20200 49531))
 ;;; Generated autoloads from flymake-ruby.el
 
 (autoload 'flymake-ruby-load "flymake-ruby" "\
 Configure flymake mode to check the current buffer's ruby syntax.
 
 This function is designed to be called in `ruby-mode-hook'; it
-does not alter flymake's global configuration, so `flymake-mode'
-alone will not suffice.
+does not alter flymake's global configuration, so function
+`flymake-mode' alone will not suffice.
 
 \(fn)" t nil)
 
 ;;;***
 
-;;;### (autoloads nil nil ("flymake-ruby-pkg.el") (20120 24669 346969))
+;;;### (autoloads nil nil ("flymake-ruby-pkg.el") (20200 49531 851089))
 
 ;;;***
 
