@@ -3,8 +3,8 @@
 ;;; Code:
 
 
-;;;### (autoloads (ruby-end-mode) "ruby-end" "ruby-end.el" (20120
-;;;;;;  24654))
+;;;### (autoloads (ruby-end-mode) "ruby-end" "ruby-end.el" (20172
+;;;;;;  270))
 ;;; Generated autoloads from ruby-end.el
 
 (autoload 'ruby-end-mode "ruby-end" "\
@@ -14,7 +14,7 @@ Automatic insertion of end blocks for Ruby.
 
 ;;;***
 
-;;;### (autoloads nil nil ("ruby-end-pkg.el") (20120 24655 49638))
+;;;### (autoloads nil nil ("ruby-end-pkg.el") (20172 2084 337366))
 
 ;;;***
 
