@@ -4,7 +4,7 @@
 
 
 ;;;### (autoloads (ruby-test-mode) "ruby-test-mode" "ruby-test-mode.el"
-;;;;;;  (20120 24653))
+;;;;;;  (20273 17110))
 ;;; Generated autoloads from ruby-test-mode.el
 
 (autoload 'ruby-test-mode "ruby-test-mode" "\
@@ -17,8 +17,8 @@ mode.
 
 ;;;***
 
-;;;### (autoloads nil nil ("ruby-test-mode-pkg.el") (20120 24653
-;;;;;;  704963))
+;;;### (autoloads nil nil ("ruby-test-mode-pkg.el") (20273 17110
+;;;;;;  855974))
 
 ;;;***
 
