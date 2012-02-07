@@ -4,22 +4,21 @@
 
 
 ;;;### (autoloads (flymake-coffee-load) "flymake-coffee" "flymake-coffee.el"
-;;;;;;  (20120 24670))
+;;;;;;  (20172 276))
 ;;; Generated autoloads from flymake-coffee.el
 
 (autoload 'flymake-coffee-load "flymake-coffee" "\
 Configure flymake mode to check the current buffer's coffeescript syntax.
 
 This function is designed to be called in `coffee-mode-hook'; it
-does not alter flymake's global configuration, so `flymake-mode'
-alone will not suffice.
+does not alter flymake's global configuration, so function
+`flymake-mode' alone will not suffice.
 
 \(fn)" t nil)
 
 ;;;***
 
-;;;### (autoloads nil nil ("flymake-coffee-pkg.el") (20120 24670
-;;;;;;  494214))
+;;;### (autoloads nil nil ("flymake-coffee-pkg.el") (20172 2085 389664))
 
 ;;;***
 
