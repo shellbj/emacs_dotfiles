@@ -3,11 +3,11 @@
 ;; Copyright (C) 2008 Eric Schulte
 
 ;; Author: Eric Schulte
-;; URL: http://www.emacswiki.org/cgi-bin/emacs/ruby-compilation.el
-;; Version: 0.7
+;; URL: https://github.com/eschulte/rinari
+;; Version: 0.8
 ;; Created: 2008-08-23
 ;; Keywords: test convenience
-;; Package-Requires: ((ruby-mode "1.1") (inf-ruby "2.1"))
+;; Package-Requires: ((ruby-mode "1.1") (inf-ruby "2.2.1"))
 
 ;;; License:
 
@@ -33,7 +33,7 @@
 ;; where the ability to jump to errors in source code is desirable.
 ;;
 ;; The functions you will probably want to use are
-;; 
+;;
 ;; ruby-compilation-run
 ;; ruby-compilation-rake
 ;; ruby-compilation-this-buffer (C-x t)
@@ -47,7 +47,12 @@
 ;; Package it up with dependencies for ELPA.
 
 ;;; Code:
-
+;; fill in some missing variables for XEmacs
+(when (featurep 'xemacs)
+  ;;this variable does not exist in XEmacs
+  (defvar safe-local-variable-values ())
+  ;;find-file-hook is not defined and will otherwise not be called by XEmacs
+  (define-compatible-variable-alias 'find-file-hook 'find-file-hooks))
 (require 'ansi-color)
 (require 'pcomplete)
 (require 'compile)
@@ -65,6 +70,9 @@
 
 (defvar ruby-compilation-executable "ruby"
   "What bin to use to launch the tests. Override if you use JRuby etc.")
+
+(defvar ruby-compilation-executable-rake "rake"
+  "What bin to use to launch rake. Override if you use JRuby etc.")
 
 (defvar ruby-compilation-test-name-flag "-n"
   "What flag to use to specify that you want to run a single test.")
@@ -100,12 +108,15 @@ exec-to-string command, but it works and seems fast"
 		     (split-string (shell-command-to-string "cap -T") "[\n]"))))
 
 ;;;###autoload
-(defun ruby-compilation-run (cmd)
-  "Run a ruby process dumping output to a ruby compilation buffer."
+(defun ruby-compilation-run (cmd &optional ruby-options name)
+  "Run a ruby process dumping output to a ruby compilation
+buffer. If supplied, `name' will be used in place of the script
+name to construct the name of the compilation buffer."
   (interactive "FRuby Comand: ")
-  (let ((name (file-name-nondirectory (car (split-string cmd))))
-	(cmdlist (cons ruby-compilation-executable
-                       (split-string (expand-file-name cmd)))))
+  (let ((name (or name (file-name-nondirectory (car (split-string cmd)))))
+	(cmdlist (append (list ruby-compilation-executable)
+                         ruby-options
+                         (split-string (expand-file-name cmd)))))
     (pop-to-buffer (ruby-compilation-do name cmdlist))))
 
 ;;;###autoload
@@ -123,7 +134,7 @@ exec-to-string command, but it works and seems fast"
 			(read-from-minibuffer "Edit Rake Command: " (concat task " "))
 		      task)))
     (pop-to-buffer (ruby-compilation-do
-		    "rake" (cons "rake"
+		    "rake" (cons ruby-compilation-executable-rake
 				 (split-string rake-args))))))
 
 ;;;###autoload
@@ -202,37 +213,38 @@ exec-to-string command, but it works and seems fast"
       (cadr (split-string this-test "#")))))
 
 (defun ruby-compilation-do (name cmdlist)
-  (let ((comp-buffer-name (format "*%s*" name)))
-    (unless (comint-check-proc comp-buffer-name)
-      ;; (if (get-buffer comp-buffer-name) (kill-buffer comp-buffer-name)) ;; actually rather keep
-      (let* ((buffer (apply 'make-comint name (car cmdlist) nil (cdr cmdlist)))
-	     (proc (get-buffer-process buffer)))
-	(save-excursion
-	  (set-buffer buffer) ;; set buffer local variables and process ornaments
-          (buffer-disable-undo)
-	  (set-process-sentinel proc 'ruby-compilation-sentinel)
-	  (set-process-filter proc 'ruby-compilation-insertion-filter)
-	  (set (make-local-variable 'compilation-error-regexp-alist)
-	       ruby-compilation-error-regexp-alist)
-	  (set (make-local-variable 'kill-buffer-hook)
-	       (lambda ()
-		 (let ((orphan-proc (get-buffer-process (buffer-name))))
-		   (if orphan-proc
-		       (kill-process orphan-proc)))))
-	  (compilation-minor-mode t)
-	  (ruby-compilation-minor-mode t))))
-    comp-buffer-name))
+  (let* ((buffer (apply 'make-comint name (car cmdlist) nil (cdr cmdlist)))
+         (proc (get-buffer-process buffer)))
+    (save-excursion
+      (set-buffer buffer) ;; set buffer local variables and process ornaments
+      (buffer-disable-undo)
+      (set-process-sentinel proc 'ruby-compilation-sentinel)
+      (set-process-filter proc 'ruby-compilation-insertion-filter)
+      (set (make-local-variable 'compilation-error-regexp-alist)
+           ruby-compilation-error-regexp-alist)
+      (set (make-local-variable 'kill-buffer-hook)
+           (lambda ()
+             (let ((orphan-proc (get-buffer-process (buffer-name))))
+               (if orphan-proc
+                   (kill-process orphan-proc)))))
+      (compilation-minor-mode t)
+      (ruby-compilation-minor-mode t)
+      (buffer-name))))
 
 (defun ruby-compilation-insertion-filter (proc string)
   "Insert text to buffer stripping ansi color codes"
-  ;; Can we use ansi-color-apply-on-region instead?
   (with-current-buffer (process-buffer proc)
     (let ((moving (= (point) (process-mark proc))))
       (save-excursion
 	(goto-char (process-mark proc))
-	(insert (ansi-color-filter-apply string))
+	(insert (ansi-color-apply (ruby-compilation-adjust-paths string)))
 	(set-marker (process-mark proc) (point)))
       (if moving (goto-char (process-mark proc))))))
+
+(defun ruby-compilation-adjust-paths (string)
+  (replace-regexp-in-string
+   "^\\([\t ]+\\)/test" "\\1test"
+   (replace-regexp-in-string "\\[/test" "[test" string)))
 
 (defun ruby-compilation-sentinel (proc msg)
   "Notify to changes in process state"
@@ -285,6 +297,6 @@ compilation buffer."
 (dolist (executable (list "jruby" "rbx" "ruby1.9" "ruby1.8" "ruby"))
   (add-to-list 'safe-local-variable-values
                (cons 'ruby-compilation-executable executable)))
-   
+
 (provide 'ruby-compilation)
 ;;; ruby-compilation.el ends here
