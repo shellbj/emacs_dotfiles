@@ -50,7 +50,8 @@
 (add-to-list 'backup-directory-alist (cons tramp-file-name-regexp nil))
 (add-to-list 'backup-directory-alist (cons "." "~/.emacs.d/backups/"))
 
-(require 'my "my-theme")
+(setq custom-theme-directory (expand-file-name (concat user-emacs-directory "themes")))
+(load-theme 'my t)
 
 (defun my-dired-load-hook ()
   (require 'dired-x))
