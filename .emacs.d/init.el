@@ -1,11 +1,9 @@
-(add-to-list 'load-path (expand-file-name "~/.emacs.d"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/confluence"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/python-extra"))
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/groovy-emacs-mode"))
+(add-to-list 'load-path (expand-file-name (file-name-as-directory user-emacs-directory)))
+(add-to-list 'load-path (expand-file-name (concat (file-name-as-directory user-emacs-directory)
+                                                  (file-name-as-directory "el-get")
+                                                  "el-get")))
 
-(load-file (expand-file-name "~/.emacs.d/jdee.el"))
-(load-file (expand-file-name "~/.emacs.d/myvc.el"))
-(load-file (expand-file-name "~/.emacs.d/mytramp.el"))
+(load-file (expand-file-name (concat (file-name-as-directory user-emacs-directory) "el-get-init.el")))
 
 (when (fboundp 'global-font-lock-mode)
   (global-font-lock-mode t))
