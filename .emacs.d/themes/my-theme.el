@@ -3,7 +3,13 @@
 (let ((fg-tty "white")
       (bg-tty "black")
       (fg "#fdfdfd")
-      (bg "black")
+      (fg-1 "#ededed")
+      (fg-2 "#dddddd")
+      (fg-3 "#cdcdcd")
+      (bg "#000000")
+      (bg+3 "#444444")
+      (bg+2 "#333333")
+      (bg+1 "#222222")
       )
   (custom-theme-set-faces
    'my
@@ -60,7 +66,7 @@
    '(diff-nonexistent ((t :inherit diff-file-header)))
 
    ;; magit
-   '(magit-item-highlight ((t nil)))
+   '(magit-item-highlight ((t (:inherit nil))))
 
    ;; dired
    '(dired-face-boring ((t (:foreground "gray30"))))

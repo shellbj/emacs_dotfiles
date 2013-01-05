@@ -74,38 +74,5 @@
     (put 'newline 'delete-selection nil)
     (put 'open-line 'delete-selection nil)))
 
-;; package archives
-(eval-after-load "package"
-  '(progn
-     (add-to-list 'package-archives '("ELPA" . "http://tromey.com/elpa/"))
-     (add-to-list 'package-archives '("marmalade" . "http://marmalade-repo.org/packages/"))))
-
-;; confluence editing support
-(autoload 'confluence-get-page "confluence" nil t)
-
-;; open confluence page
-(global-set-key "\C-xwf" 'confluence-get-page)
-
-(eval-after-load "confluence"
-  '(progn
-     (require 'longlines)
-     (progn
-       (add-hook 'confluence-mode-hook 'longlines-mode)
-       (add-hook 'confluence-before-save-hook 'longlines-before-revert-hook)
-       (add-hook 'confluence-before-revert-hook 'longlines-before-revert-hook)
-       (add-hook 'confluence-mode-hook '(lambda () (local-set-key "\C-j" 'confluence-newline-and-indent)))
-       (setq confluence-default-space-alist (list (cons confluence-url "sas"))
-             confluence-url "http://wiki.orbitz.net/rpc/xmlrpc"))))
-
-;; setup confluence mode
-(add-hook 'confluence-mode-hook
-          '(lambda ()
-             (local-set-key "\C-xw" confluence-prefix-map)))
-
-;; robot-mode
-(add-to-list 'load-path (expand-file-name "~/.emacs.d/packages/robot-mode"))
-(autoload 'robot-mode "robot-mode" nil t)
-(add-to-list 'auto-mode-alist '("\\.tsv\\'" . robot-mode))
-
 ;; zsh automode
 (add-to-list 'auto-mode-alist '("\\.zsh" . sh-mode))

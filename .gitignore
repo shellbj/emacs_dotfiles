@@ -6,3 +6,7 @@
 /.emacs.d/backups/
 /.emacs.d/tramp/
 /.emacs.d/semanticdb/
+/.emacs.d/tramp
+/.emacs.d/eshell/history
+/.emacs.d/session.*
+/.emacs.d/elpa/
