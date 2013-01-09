@@ -14,9 +14,9 @@
   (custom-theme-set-faces
    'my
    `(default ((((type tty))
-               (:foreground ,fg-tty :background ,bg-tty :height 120 :width normal :family "Mono"))
+               (:foreground ,fg-tty :background ,bg-tty))
               (t
-               (:foreground ,fg :background ,bg :height 120 :width normal :family "Mono"))))
+               (:foreground ,fg :background ,bg))))
    '(cursor ((t (:foreground "black" :background "medium turquoise"))))
    '(highlight ((t (:foreground "white" :background "dark green"))))
    '(region ((t (:background "darkslateblue" :foreground "white"))))
@@ -51,7 +51,7 @@
    '(diff-changed ((((class color) (background light))
                     (:foreground "dark yellow"))
                    (((class color) (background dark))
-                    (:foreground "yellow")))) 
+                    (:foreground "yellow"))))
    '(diff-removed ((((class color) (background light))
                     (:foreground "dark red"))
                    (((class color) (background dark))
