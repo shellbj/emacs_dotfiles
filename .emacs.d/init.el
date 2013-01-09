@@ -25,8 +25,6 @@
 
 (setq
  transient-mark-mode t ;; enable visual feedback on selections
- blink-cursor-mode nil
- column-number-mode t
  c-basic-offset 4
  mouse-yank-at-point t
  inhibit-startup-message t
@@ -34,9 +32,6 @@
  auto-save-interval 600
  version-control t
  indicate-empty-lines t
- scroll-bar-mode nil
- show-paren-mode t
- tool-bar-mode nil
  indicate-buffer-boundaries (quote ((top . left) (bottom . right)))
  diff-switches "-u"
  display-time-24hr-format t
@@ -44,6 +39,13 @@
  mode-line-in-non-selected-windows nil  ; keep things quiet for now
  enable-recursive-minibuffers t         ; contemplate crass confusion
  confirm-kill-emacs 'y-or-n-p)
+
+(menu-bar-mode 't)
+(set-scroll-bar-mode nil)
+(tool-bar-mode -1)
+(show-paren-mode t)
+(column-number-mode t)
+(blink-cursor-mode -1)
 
 (add-to-list 'backup-directory-alist (cons tramp-file-name-regexp nil))
 (add-to-list 'backup-directory-alist (cons "." "~/.emacs.d/backups/"))
