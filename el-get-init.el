@@ -1,6 +1,6 @@
 ;; Define where to look for init-pkgname.el configurations
 (setq el-get-user-package-directory
-      (expand-file-name (concat (file-name-as-directory user-emacs-directory) "recipes/config")))
+      (expand-file-name "recipes/config" user-emacs-directory))
 
 ;; use these recipes
 (setq el-get-packages

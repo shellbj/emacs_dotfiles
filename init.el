@@ -1,9 +1,5 @@
-(add-to-list 'load-path (expand-file-name (file-name-as-directory user-emacs-directory)))
-(add-to-list 'load-path (expand-file-name (concat (file-name-as-directory user-emacs-directory)
-                                                  (file-name-as-directory "el-get")
-                                                  "el-get")))
-
-(load-file (expand-file-name (concat (file-name-as-directory user-emacs-directory) "el-get-init.el")))
+(add-to-list 'load-path (expand-file-name "el-get/el-get" user-emacs-directory))
+(load-file (expand-file-name "el-get-init.el" user-emacs-directory))
 
 (when (fboundp 'global-font-lock-mode)
   (global-font-lock-mode t))
@@ -48,9 +44,9 @@
 (blink-cursor-mode -1)
 
 (add-to-list 'backup-directory-alist (cons tramp-file-name-regexp nil))
-(add-to-list 'backup-directory-alist (cons "." "~/.emacs.d/backups/"))
+(add-to-list 'backup-directory-alist (cons "." (expand-file-name "backups" user-emacs-directory)))
 
-(setq custom-theme-directory (expand-file-name (concat user-emacs-directory "themes")))
+(setq custom-theme-directory (expand-file-name "themes" user-emacs-directory))
 (load-theme 'my t)
 
 (defun my-dired-load-hook ()
