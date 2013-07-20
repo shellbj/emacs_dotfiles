@@ -125,3 +125,23 @@
 
 ;;; zsh automode
 (add-to-list 'auto-mode-alist '("\\.zsh" . sh-mode))
+
+;;; Machine specific settings
+;; Local one off config settings
+(let ((local-config (expand-file-name "local.el" user-emacs-directory)))
+  (when (file-exists-p local-config)
+    (load local-config)))
+
+;; Local packages for loading
+(defvar local-packages-dir (expand-file-name "packages" user-emacs-directory)
+  "Location of any random elisp files I find from other authors.")
+(add-to-list 'load-path local-packages-dir)
+
+(dolist (project (directory-files local-packages-dir t "\\w+"))
+  (when (file-directory-p project)
+    (add-to-list 'load-path project)))
+
+;; Local Variables:
+;; eval: (outline-minor-mode)
+;; outline-regexp: ";;;;*[ ]"
+;; End:

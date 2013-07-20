@@ -1,6 +1,4 @@
 (add-to-list 'load-path (expand-file-name "packages/jde/lisp" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "packages/jdee-extra" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "packages/cedet" user-emacs-directory))
 
 (autoload 'jde-mode "jde" "JDE mode." t)
 (autoload 'semantic-mode "semantic" "Semantic mode." t)

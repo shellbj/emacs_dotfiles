@@ -11,3 +11,4 @@
 /session.*
 /elpa/
 /abbrev_defs
+/local.el
