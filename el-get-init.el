@@ -5,40 +5,44 @@
 ;; use these recipes
 (setq el-get-packages
       '(el-get
-
         magit
-
-        groovy-emacs-mode
-
         yasnippet
 
+        ;; puppet
+        puppet-mode
+
+        ;; documentation
         asciidoc
         markdown-mode
         rst-mode
+        yaml-mode
 
+        ;; groovy
+        groovy-emacs-mode
+
+        ;; ruby
         ruby-mode
         rspec-mode
         rvm
 
-        puppet-mode
-
+        ;; python
         python-mode
         pylookup
         python-pep8
         ropemacs
-        rst-mode
         virtualenv
 
-        yaml-mode
-
+        ;; haskell
         haskell-mode
         haskell-mode-exts
 
+        ;; clojure
         clojure-mode
         midje-mode
         elein
         nrepl
 
+        ;; scala
         scala-mode
 ))
 
