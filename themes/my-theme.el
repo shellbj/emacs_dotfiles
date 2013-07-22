@@ -36,11 +36,10 @@
    `(success ((,class (:foreground ,green ))))
    `(warning ((,class (:foreground ,yellow ))))
    `(error ((,class (:foreground ,orange  :weight bold :underline t))))
-   `(lazy-highlight ((,class (:background "gray25"))))
    `(escape-glyph ((,class (:foreground ,violet))))
 
    ;; misc faces
-   `(region ((,class (:background "darkslateblue" :foreground "white"))))
+   `(region ((,class (:background "darkslateblue" :foreground ,fg))))
    `(button ((,class (:underline t :foreground ,cyan))))
 
    ;; font lock
@@ -55,11 +54,13 @@
    `(font-lock-preprocessor-face ((,class (:foreground ,blue))))
    `(font-lock-string-face ((,class (:foreground ,yellow))))
    `(font-lock-type-face ((,class (:foreground "Coral"))))
-   `(font-lock-variable-name-face ((,class (:bold t :foreground "white"))))
+   `(font-lock-variable-name-face ((,class (:bold t :foreground ,fg))))
    `(font-lock-warning-face ((,class (:bold t :foreground ,red))))
 
    ;; isearch
-   `(isearch ((,class (:foreground "white" :background ,yellow))))
+   `(isearch ((,class (:foreground ,fg :background ,yellow :bold t))))
+   `(isearch-fail ((,class (:background ,red))))
+   `(lazy-highlight ((,class (:background ,violet))))
 
    ;; diff
    `(diff-header ((,class (:foreground ,blue :weight bold))))
