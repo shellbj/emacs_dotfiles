@@ -56,8 +56,8 @@
 (setq require-final-newline t)
 
 ;; tab handling
-(set-default indent-tabs-mode nil
-             tab-width 2)
+(setq-default indent-tabs-mode nil
+              tab-width 2)
 
 ;; Always show matching sets of parentheses
 (show-paren-mode t)
