@@ -29,14 +29,15 @@
    ;; `(shadow ((,class ( ))))
    ;; `(match ((,class ())))
    `(cursor ((,class (:foreground ,bg :background ,cyan :inverse-video t))))
+   `(error ((,class (:foreground ,orange  :weight bold :underline t))))
+   `(escape-glyph ((,class (:foreground ,violet))))
    `(escape-glyph-face ((,class (:foreground ,red))))
    ;; `(fringe ((,class ())))
    ;; `(header-line ((,class ())))
+   `(highlight ((,class (:background ,bg+2 ))))
    `(link-visited ((,class (:underline t :foreground "dark cyan"))))
    `(success ((,class (:foreground ,green ))))
    `(warning ((,class (:foreground ,yellow ))))
-   `(error ((,class (:foreground ,orange  :weight bold :underline t))))
-   `(escape-glyph ((,class (:foreground ,violet))))
 
    ;; misc faces
    `(region ((,class (:background "darkslateblue" :foreground ,fg))))
