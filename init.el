@@ -114,6 +114,8 @@
 
 ;;; Dired
 (defun my-dired-load-hook ()
+  ;; find files relative to thing-at-point
+  (setq dired-x-hands-off-my-keys nil)
   (require 'dired-x))
 (add-hook 'dired-load-hook 'my-dired-load-hook)
 
