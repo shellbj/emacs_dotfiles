@@ -69,18 +69,6 @@
         scala-mode
 ))
 
-(defun my-el-get-post-install-hook (pkg)
-  ;; after installing el-get, load the local package list
-  (if (string-equal pkg "el-get")
-      (let ((my-packages (append el-get-packages
-                                 (mapcar 'el-get-source-name el-get-sources))))
-	;; Add locally curated recipes for el-get
-	(add-to-list 'el-get-recipe-path (file-name-directory el-get-user-package-directory))
-
-        (el-get-cleanup my-packages)
-        (el-get 'sync my-packages))))
-(add-hook 'el-get-post-install-hooks 'my-el-get-post-install-hook)
-
 ;; try to require el-get
 (unless (require 'el-get nil 'noerror)
   (with-current-buffer
@@ -91,4 +79,10 @@
       (eval-print-last-sexp))))
 
 ;; successfully required el-get, load the packages!
-(my-el-get-post-install-hook "el-get")
+(let ((my-packages (append el-get-packages
+                           (mapcar 'el-get-source-name el-get-sources))))
+	;; Add locally curated recipes for el-get
+	(add-to-list 'el-get-recipe-path (file-name-directory el-get-user-package-directory))
+
+  (el-get-cleanup my-packages)
+  (el-get 'sync my-packages))
