@@ -6,19 +6,39 @@
 (setq el-get-packages
       '(el-get
         magit
+        gist
         yasnippet
+        undo-tree
+
+        ;; ido addons
+        ido-ubiquitous
+        smex
+
+        ;; css handling
+        sass-mode
+        scss-mode
+
+        ;; emacs-lisp
+        elisp-slime-nav
+
+        ;; lisp
+        autopair
+        paredit
+        rainbow-delimiters
 
         ;; puppet
         puppet-mode
 
         ;; documentation
-        asciidoc
+        adoc-mode
+        haml-mode
         markdown-mode
+        mustache-mode
         rst-mode
         yaml-mode
 
         ;; groovy
-        groovy-emacs-mode
+        Emacs-Groovy-Mode
 
         ;; ruby
         ruby-mode
@@ -31,6 +51,7 @@
         python-pep8
         ropemacs
         virtualenv
+        jinja2-mode
 
         ;; haskell
         haskell-mode
@@ -38,9 +59,11 @@
 
         ;; clojure
         clojure-mode
+        cljsbuild-mode
         midje-mode
         elein
         nrepl
+        ac-nrepl
 
         ;; scala
         scala-mode
