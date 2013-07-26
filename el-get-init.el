@@ -9,6 +9,7 @@
         gist
         yasnippet
         undo-tree
+        diminish
 
         ;; ido addons
         ido-ubiquitous
