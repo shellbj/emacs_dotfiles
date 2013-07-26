@@ -99,7 +99,8 @@
 (display-time-mode t)
 
 ;;; Backups
-(setq auto-save-file-name-transforms `(("." ,(expand-file-name "backups" user-emacs-directory) t)))
+(setq auto-save-file-name-transforms `(("\\(.*/\\)*\\([^/]*\\)"
+                                        ,(expand-file-name "backups/\\2" user-emacs-directory) t)))
 (add-to-list 'backup-directory-alist (cons tramp-file-name-regexp nil))
 (add-to-list 'backup-directory-alist (cons "." (expand-file-name "backups" user-emacs-directory)))
 
