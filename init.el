@@ -5,6 +5,9 @@
  ; contemplate crass confusion
  enable-recursive-minibuffers t)
 
+(setq-default
+ comment-column 0)
+
 ;;; el-get
 (add-to-list 'load-path (expand-file-name "el-get/el-get" user-emacs-directory))
 (load-file (expand-file-name "el-get-init.el" user-emacs-directory))
