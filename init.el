@@ -125,6 +125,12 @@
   (define-key dired-mode-map "\C-k" 'dired-kill-subdir))
 (add-hook 'dired-mode-hook 'my-dired-mode-hook)
 
+;; IDO
+(ido-mode t)
+(ido-everywhere t)
+(setq ido-show-dot-for-dired t)
+(setq ido-use-virtual-buffers t)
+
 ;;; zsh automode
 (add-to-list 'auto-mode-alist '("\\.zsh" . sh-mode))
 
