@@ -2,6 +2,19 @@
 (setq el-get-user-package-directory
       (expand-file-name "recipes/config" user-emacs-directory))
 
+;; use the latest el-get
+(setq el-get-master-branch t)
+
+;; use ssh protocal for install url
+(setq el-get-git-install-url
+      "git@github.com:dimitri/el-get.git")
+
+;; use ssh protocal for all github recipes
+(setq el-get-github-default-url-type 'ssh)
+
+;; be verbose about package setup
+;(setq el-get-verbose t)
+
 ;; use these recipes
 (setq el-get-packages
       '(el-get
