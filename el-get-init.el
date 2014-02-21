@@ -25,7 +25,7 @@
         diminish
 
         ;; ido addons
-        ido-ubiquitous
+        ;; ido-ubiquitous
         smex
 
         ;; css handling
@@ -69,15 +69,15 @@
 
         ;; haskell
         haskell-mode
-        haskell-mode-exts
+        ;; haskell-mode-exts
 
         ;; clojure
         clojure-mode
         cljsbuild-mode
         midje-mode
         elein
-        nrepl
-        ac-nrepl
+        ;; nrepl
+        ;; ac-nrepl
 
         ;; scala
         scala-mode
