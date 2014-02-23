@@ -24,6 +24,8 @@
         undo-tree
         diminish
 
+        company-mode
+
         ;; ido addons
         ;; ido-ubiquitous
         smex
