@@ -1,19 +1,43 @@
+# -*- mode: gitignore; -*-
+
 *~
+\#*\#
+.\#*
+/.emacs.desktop
+/.emacs.desktop.lock
 *.elc
-/el-get/
+
 /url/
 /auto-save-list/
 /backups/
-/tramp/
-/semanticdb/
 /tramp
-/eshell/
 /session.*
-/elpa/
 /abbrev_defs
-/local.el
 /ido.last
 /recentf
 /.smex-items
 /ac-comphist.dat
 /places
+
+# local customization
+/local.el
+
+# elpa packages
+/elpa/
+
+# el-get packages
+/el-get/
+
+# semantic-mode
+/semanticdb/
+
+# Org-mode
+.org-id-locations
+*_archive
+
+# eshell files
+/eshell/history
+/eshell/lastdir
+
+# flymake-mode
+*_flymake.*
