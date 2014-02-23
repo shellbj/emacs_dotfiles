@@ -102,5 +102,6 @@
 	;; Add locally curated recipes for el-get
 	(add-to-list 'el-get-recipe-path (file-name-directory el-get-user-package-directory))
 
-  (el-get-cleanup my-packages)
+  ;;;; Cleanup has a tendiency to break things; dirty unused checkouts are better
+  ;; (el-get-cleanup my-packages)
   (el-get 'sync my-packages))
