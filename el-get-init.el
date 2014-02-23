@@ -50,6 +50,7 @@
         mustache-mode
         rst-mode
         yaml-mode
+        jekyll-el
 
         ;; groovy
         Emacs-Groovy-Mode
