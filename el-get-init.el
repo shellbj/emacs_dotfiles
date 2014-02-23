@@ -100,7 +100,8 @@
 (let ((my-packages (append el-get-packages
                            (mapcar 'el-get-source-name el-get-sources))))
 	;; Add locally curated recipes for el-get
-	(add-to-list 'el-get-recipe-path (file-name-directory el-get-user-package-directory))
+  (add-to-list 'el-get-recipe-path
+               (expand-file-name "recipes" user-emacs-directory))
 
   ;;;; Cleanup has a tendiency to break things; dirty unused checkouts are better
   ;; (el-get-cleanup my-packages)
