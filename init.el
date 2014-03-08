@@ -1,3 +1,7 @@
+;; Don't mess with `user-init-file` when using Custom
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
+
 ;; random settings
 (setq
  c-basic-offset 4
