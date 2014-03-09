@@ -167,6 +167,8 @@
 
 ;; Bindings
 (global-set-key (kbd "C-x C-z") 'magit-status)
+(define-key (current-global-map) [remap execute-extended-command] 'smex)
+(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 ;; Packages that should always be loaded
 (require 'ido)
