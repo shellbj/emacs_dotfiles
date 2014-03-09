@@ -165,6 +165,9 @@
   (when (file-directory-p project)
     (add-to-list 'load-path project)))
 
+;; Bindings
+(global-set-key (kbd "C-x C-z") 'magit-status)
+
 ;; Packages that should always be loaded
 (require 'ido)
 
