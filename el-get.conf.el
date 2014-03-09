@@ -6,10 +6,6 @@
 ;; Be verbose about package setup
 ;(setq el-get-verbose t)
 
-;; Define where to look for init-pkgname.el configurations
-(setq el-get-user-package-directory
-      (expand-file-name "el-get-init" user-emacs-directory))
-
 ;; Use the latest el-get
 (setq el-get-master-branch t)
 
