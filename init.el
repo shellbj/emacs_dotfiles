@@ -2,6 +2,20 @@
 (setq custom-file (expand-file-name "custom.el" user-emacs-directory))
 (load custom-file)
 
+;; Initialize all packages after loading them; not the el-get ones
+(defun user/initialize-after-load (file)
+  (let* ((filename (file-name-nondirectory file))
+         (name (substring filename 0 (string-match "\\.elc?\\>" filename)))
+         (target (expand-file-name (format "%s.conf.el" name) user-emacs-directory)))
+    (when (file-readable-p target)
+      (load target))))
+
+;; Initialize current features
+(mapc '(lambda (f) (user/initialize-after-load (symbol-name f))) features)
+
+;; Initialize for future features
+(add-hook 'after-load-functions 'user/initialize-after-load)
+
 ;; random settings
 (setq
  c-basic-offset 4
