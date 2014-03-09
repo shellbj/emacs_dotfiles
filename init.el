@@ -94,7 +94,6 @@
 (put 'narrow-to-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (put 'erase-buffer 'disabled nil)
-(put 'dired-find-alternate-file 'disabled nil)
 
 ;; alias "yes" or "no" to "y" or "n"
 (fset 'yes-or-no-p 'y-or-n-p)
@@ -133,19 +132,6 @@
 ;;; Themes
 (setq custom-theme-directory (expand-file-name "themes" user-emacs-directory))
 (load-theme 'my t)
-
-;;; Dired
-(defun my-dired-load-hook ()
-  ;; find files relative to thing-at-point
-  (setq dired-x-hands-off-my-keys nil)
-  (require 'dired-x))
-(add-hook 'dired-load-hook 'my-dired-load-hook)
-
-(defun my-dired-mode-hook ()
-  (if (not (featurep 'dired-x)) (require 'dired-x))
-  (dired-omit-mode 't)
-  (define-key dired-mode-map "\C-k" 'dired-kill-subdir))
-(add-hook 'dired-mode-hook 'my-dired-mode-hook)
 
 ;;; zsh automode
 (add-to-list 'auto-mode-alist '("\\.zsh" . sh-mode))
