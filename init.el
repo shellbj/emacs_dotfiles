@@ -1,14 +1,49 @@
-;; Don't mess with `user-init-file` when using Custom
-(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
-(load custom-file)
-
-;; Load configuration files after features are loaded
+;;; Load configuration files after features are loaded
 (dolist (file (directory-files user-emacs-directory))
   (when (string-match (format "^\\(.+\\)\\.conf\\.el$") file)
     (eval-after-load (match-string-no-properties 1 file)
       `(load ,(concat user-emacs-directory file)))))
 
-;; random settings
+;;; Don't mess with `user-init-file` when using Custom
+(setq custom-file (expand-file-name "custom.el" user-emacs-directory))
+(load custom-file)
+
+;;; el-get
+(setq el-get-dir (expand-file-name "el-get" user-emacs-directory))
+(add-to-list 'load-path (expand-file-name "el-get" el-get-dir))
+(load-file (expand-file-name "el-get-init.el" user-emacs-directory))
+
+;;; Themes
+(setq custom-theme-directory (expand-file-name "themes" user-emacs-directory))
+(load-theme 'my t)
+
+;;; Machine specific settings
+;; Local one off config settings
+(let ((local-config (expand-file-name "local.el" user-emacs-directory)))
+  (when (file-exists-p local-config)
+    (load local-config)))
+
+;; Local packages for loading
+(defvar local-packages-dir (expand-file-name "packages" user-emacs-directory)
+  "Location of any random elisp files I find from other authors.")
+(add-to-list 'load-path local-packages-dir)
+
+(dolist (project (directory-files local-packages-dir t "\\w+"))
+  (when (file-directory-p project)
+    (add-to-list 'load-path project)))
+
+
+;;; Packages that should always be loaded
+(require 'ido)
+(require 'undo-tree)
+(require 'git-gutter)
+
+
+;;; User info
+(setq user-full-name "Bryan Shell")
+(setq user-mail-address "bryan.shell@orbitz.com")
+
+;;; random settings
 (setq
  c-basic-offset 4
  diff-switches "-u"
@@ -17,14 +52,6 @@
 
 (setq-default
  comment-column 0)
-
-;;; el-get
-(add-to-list 'load-path (expand-file-name "el-get/el-get" user-emacs-directory))
-(load-file (expand-file-name "el-get-init.el" user-emacs-directory))
-
-;;; User info
-(setq user-full-name "Bryan Shell")
-(setq user-mail-address "bryan.shell@orbitz.com")
 
 ;;; GUI Settings
 (setq
@@ -121,39 +148,12 @@
  ;; handle backups for linked files properly
  backup-by-copying-when-linked t)
 
-;;; Themes
-(setq custom-theme-directory (expand-file-name "themes" user-emacs-directory))
-(load-theme 'my t)
-
-;;; zsh automode
+;;; Automode additions
 (add-to-list 'auto-mode-alist '("\\.zsh" . sh-mode))
 
-;;; Machine specific settings
-;; Local one off config settings
-(let ((local-config (expand-file-name "local.el" user-emacs-directory)))
-  (when (file-exists-p local-config)
-    (load local-config)))
-
-;; Local packages for loading
-(defvar local-packages-dir (expand-file-name "packages" user-emacs-directory)
-  "Location of any random elisp files I find from other authors.")
-(add-to-list 'load-path local-packages-dir)
-
-(dolist (project (directory-files local-packages-dir t "\\w+"))
-  (when (file-directory-p project)
-    (add-to-list 'load-path project)))
-
-;; Bindings
+;;; Key Bindings
 (global-set-key (kbd "C-x C-z") 'magit-status)
 (define-key (current-global-map) [remap execute-extended-command] 'smex)
 (global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
-;; Packages that should always be loaded
-(require 'ido)
-(require 'undo-tree)
-(require 'git-gutter)
-
-;; Local Variables:
-;; eval: (outline-minor-mode)
-;; outline-regexp: ";;;;*[ ]"
-;; End:
+;; End
