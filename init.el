@@ -151,6 +151,7 @@
 ;; Packages that should always be loaded
 (require 'ido)
 (require 'undo-tree)
+(require 'git-gutter)
 
 ;; Local Variables:
 ;; eval: (outline-minor-mode)

@@ -23,6 +23,7 @@
 (el-get nil
         '(
         magit
+        git-gutter
         ;; gist
         yasnippet
         undo-tree
