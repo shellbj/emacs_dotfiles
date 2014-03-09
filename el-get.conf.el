@@ -1,7 +1,7 @@
 ;; el-get configuration
 
 ;; Defer evaluation of :post-init and :after until libraries are required
-;(setq el-get-is-lazy t)
+(setq el-get-is-lazy t)
 
 ;; Be verbose about package setup
 ;(setq el-get-verbose t)
