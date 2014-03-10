@@ -44,7 +44,10 @@
 (require 'ido)
 (require 'undo-tree)
 (require 'git-gutter)
-
+(require 'windmove)                   ; move to other windows out of order
+(require 'winner)                     ; window configuration undo/redo
+(require 'paren)                      ; show match parentheses
+(require 'hl-line)                    ; highlight the current line
 
 ;;; User info
 (setq user-full-name "Bryan Shell")
@@ -89,29 +92,12 @@
 ;; Revert buffers when underlying files change
 (global-auto-revert-mode t)
 
-;; Window configuration undo/redo
-(winner-mode t)
-
-;; Move around windows with arrow keys
-(windmove-default-keybindings 'shift)
-(global-set-key (kbd "C-c <left>") 'windmove-left)
-(global-set-key (kbd "C-c <right>") 'windmove-right)
-(global-set-key (kbd "C-c <up>") 'windmove-up)
-(global-set-key (kbd "C-c <down>") 'windmove-down)
-
 ;; add a new line to the end on saves
 (setq require-final-newline t)
 
 ;; tab handling
 (setq-default indent-tabs-mode nil
               tab-width 2)
-
-;; Always show matching sets of parentheses
-(show-paren-mode t)
-(setq show-paren-style 'parentheses)
-
-;; Highlight the current line.
-(global-hl-line-mode t)
 
 ;; re-enable commands
 (put 'set-goal-column 'disabled nil)
