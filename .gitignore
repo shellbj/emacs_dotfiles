@@ -42,3 +42,6 @@
 
 # flymake-mode
 *_flymake.*
+
+# generated autoloads from configuration files
+/autoloads.el

@@ -1,3 +1,10 @@
+;;; Generate autoloads for configuration
+(let ((generated-autoload-file (expand-file-name "autoloads.el" user-emacs-directory)))
+  (update-directory-autoloads user-emacs-directory)
+  (load generated-autoload-file)
+  (let ((buf (get-file-buffer generated-autoload-file)))
+    (when buf (kill-buffer buf))))
+
 ;;; Load configuration files after features are loaded
 (dolist (file (directory-files user-emacs-directory))
   (when (string-match (format "^\\(.+\\)\\.conf\\.el$") file)
@@ -147,13 +154,5 @@
  backup-by-copying t
  ;; handle backups for linked files properly
  backup-by-copying-when-linked t)
-
-;;; Automode additions
-(add-to-list 'auto-mode-alist '("\\.zsh" . sh-mode))
-
-;;; Key Bindings
-(global-set-key (kbd "C-x C-z") 'magit-status)
-(define-key (current-global-map) [remap execute-extended-command] 'smex)
-(global-set-key (kbd "M-X") 'smex-major-mode-commands)
 
 ;; End
