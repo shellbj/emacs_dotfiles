@@ -16,8 +16,6 @@
 (load custom-file)
 
 ;;; el-get
-(setq el-get-dir (expand-file-name "el-get" user-emacs-directory))
-(add-to-list 'load-path (expand-file-name "el-get" el-get-dir))
 (load-file (expand-file-name "el-get-init.el" user-emacs-directory))
 
 ;;; Themes

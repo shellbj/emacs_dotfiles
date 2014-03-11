@@ -1,5 +1,11 @@
 ;; el-get bootstrap
 
+;; base all el-get activity under vendor
+(setq el-get-dir (expand-file-name "vendor" user-emacs-directory))
+
+;; add el-get to the load-path
+(add-to-list 'load-path (expand-file-name "el-get" el-get-dir))
+
 ;; use the latest el-get
 (setq el-get-master-branch t)
 
