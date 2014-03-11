@@ -149,4 +149,7 @@
 (define-key global-map (kbd "C-+") 'text-scale-increase)
 (define-key global-map (kbd "C--") 'text-scale-decrease)
 
+(when window-system
+  (global-unset-key (kbd "C-z")))       ; suspend-frame causes wierdness
+
 ;; End
