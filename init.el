@@ -118,6 +118,11 @@
 ;; No Rudolf to light my way
 (blink-cursor-mode -1)
 
+;; X selections should stay in the kill ring
+(setq save-interprogram-paste-before-kill t)
+(setq x-select-enable-primary t)
+(setq x-select-enable-clipboard t)
+
 ;;; Modeline info
 ;; Line and Column number in the modeline
 (line-number-mode t)
