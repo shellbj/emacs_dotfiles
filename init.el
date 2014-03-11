@@ -146,4 +146,9 @@
  ;; handle backups for linked files properly
  backup-by-copying-when-linked t)
 
+;;; Key Bindings
+;; Font size
+(define-key global-map (kbd "C-+") 'text-scale-increase)
+(define-key global-map (kbd "C--") 'text-scale-decrease)
+
 ;; End
