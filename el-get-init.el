@@ -5,7 +5,7 @@
 
 ;; use ssh protocal for install url
 (setq el-get-git-install-url
-      "git@github.com:dimitri/el-get.git")
+      "https://github.com/dimitri/el-get.git")
 
 ;; try to require el-get
 (unless (require 'el-get nil 'noerror)

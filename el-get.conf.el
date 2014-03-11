@@ -10,7 +10,7 @@
 (setq el-get-master-branch t)
 
 ;; Use ssh protocal for all github recipes
-(setq el-get-github-default-url-type 'ssh)
+(setq el-get-github-default-url-type 'https)
 
 ;; Add locally curated recipes for el-get
 (add-to-list 'el-get-recipe-path
