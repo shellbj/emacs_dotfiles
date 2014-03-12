@@ -79,7 +79,7 @@
         ;;         jinja2-mode
 
         ;; haskell
-        ;;         haskell-mode
+        haskell-mode
         ;;         haskell-mode-exts
 
         ;; clojure
