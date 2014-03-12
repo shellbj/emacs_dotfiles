@@ -69,7 +69,7 @@
         ;;         rspec-mode
 
         ;; python
-        python-mode
+        ;; python-mode                     ; python.org mode
         ;;         pylookup
         ;;         python-pep8
         ;;         ropemacs
