@@ -66,9 +66,7 @@
         Emacs-Groovy-Mode
 
         ;; ruby
-        ruby-mode
         ;;         rspec-mode
-        ;;         rvm
 
         ;; python
         python-mode
