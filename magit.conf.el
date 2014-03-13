@@ -11,3 +11,7 @@
 (setq magit-repo-dirs (list (expand-file-name "~/projects")
                             (expand-file-name "~/work"))
       magit-repo-dirs-depth 2)
+
+;; Diminish mode-line noise if available
+(if (fboundp 'diminish)
+    (diminish 'magit-auto-revert-mode))

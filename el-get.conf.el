@@ -27,7 +27,7 @@
         ;; gist
         yasnippet
         undo-tree
-        ;; diminish
+        diminish
 
         fill-column-indicator
 
