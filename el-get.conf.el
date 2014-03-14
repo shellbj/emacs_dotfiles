@@ -17,7 +17,12 @@
              (expand-file-name "recipes" user-emacs-directory))
 
 ;; Locally curated defined inline
-(setq el-get-sources nil)
+(setq el-get-sources
+      '((:name pyenv
+              :description "Emacs integration for pyenv"
+              :type github
+              :pkgname "shellbj/pyenv.el"
+              :compile "pyenv.el")))
 
 ;; Use these recipes
 (el-get nil
@@ -70,6 +75,7 @@
 
         ;; python
         ;; python-mode                     ; python.org mode
+        pyenv
         ;;         pylookup
         ;;         python-pep8
         ;;         ropemacs
