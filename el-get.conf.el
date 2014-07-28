@@ -18,7 +18,11 @@
 
 ;; Locally curated defined inline
 (setq el-get-sources
-      '((:name pyenv
+      '((:name racket-mode
+               :description "GNU Emacs major modes for Racket: Edit and REPL."
+               :type github
+               :pkgname "greghendershott/racket-mode")
+	(:name pyenv
               :description "Emacs integration for pyenv"
               :type github
               :pkgname "shellbj/pyenv.el"
@@ -53,6 +57,7 @@
         ;;         autopair
         ;;         paredit
         ;;         rainbow-delimiters
+        racket-mode
 
         ;; puppet
         ;; ;        puppet-mode
