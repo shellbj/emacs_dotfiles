@@ -111,6 +111,7 @@
 ;; Hide the scroll bar, tool bar, and menu bar.
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
+(horizontal-scroll-bar-mode -1)
 (tool-bar-mode -1)
 
 ;; No Rudolf to light my way
