@@ -82,6 +82,7 @@
 
         ;; ruby
         ;;         rspec-mode
+        rbenv
 
         ;; python
         ;; python-mode                     ; python.org mode
