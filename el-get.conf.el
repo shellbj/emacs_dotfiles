@@ -92,10 +92,11 @@
         ;;         haskell-mode-exts
 
         ;; clojure
-        ;;         clojure-mode
+        clojure-mode
+        cider
+        elein
         ;;         cljsbuild-mode
         ;;         midje-mode
-        ;;         elein
         ;;         ;;nrepl
         ;;         ;;ac-nrepl
 
