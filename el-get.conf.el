@@ -22,15 +22,20 @@
                :description "GNU Emacs major modes for Racket: Edit and REPL."
                :type github
                :pkgname "greghendershott/racket-mode")
-	(:name pyenv
-              :description "Emacs integration for pyenv"
-              :type github
-              :pkgname "shellbj/pyenv.el"
-              :compile "pyenv.el")))
+        (:name pyenv
+               :description "Emacs integration for pyenv"
+               :type github
+               :pkgname "shellbj/pyenv.el"
+               :compile "pyenv.el")
+        (:name eclim
+               :type github
+               :pkgname "shellbj/emacs-eclim")))
 
 ;; Use these recipes
 (el-get nil
-        '(
+        '(eclim
+          auto-complete
+
         magit
         git-gutter
         ;; gist
