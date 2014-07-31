@@ -42,7 +42,7 @@
         yasnippet
         undo-tree
         diminish
-
+        ibuffer-vc
         fill-column-indicator
 
         company-mode
