@@ -83,6 +83,7 @@
         ;; ruby
         ;;         rspec-mode
         rbenv
+        rubocop
 
         ;; python
         ;; python-mode                     ; python.org mode
