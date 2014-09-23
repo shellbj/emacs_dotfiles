@@ -47,6 +47,8 @@
 
         company-mode
 
+        dockerfile-mode
+
         ;; ido addons
         ;; ido-ubiquitous
         smex
