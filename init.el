@@ -46,6 +46,7 @@
 (require 'winner)                     ; window configuration undo/redo
 (require 'paren)                      ; show match parentheses
 (require 'hl-line)                    ; highlight the current line
+(require 'ibuffer)
 
 ;;; User info
 (setq user-full-name "Bryan Shell")
