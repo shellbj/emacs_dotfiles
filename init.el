@@ -73,6 +73,9 @@
  ;; Show incomplete chords while typing them.
  echo-keystrokes 0.1)
 
+;; don't bother updating a menu I never see
+(recentf-mode -1)
+
 (setq-default
  ;; Show start and end of buffers on the right
  indicate-buffer-boundaries 'right
