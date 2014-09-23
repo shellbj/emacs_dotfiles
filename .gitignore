@@ -45,3 +45,4 @@
 
 # generated autoloads from configuration files
 /autoloads.el
+/.python-environments/

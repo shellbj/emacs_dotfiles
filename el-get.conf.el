@@ -92,6 +92,7 @@
         ;;         ropemacs
         ;;         virtualenv
         ;;         jinja2-mode
+        jedi
 
         ;; haskell
         haskell-mode
