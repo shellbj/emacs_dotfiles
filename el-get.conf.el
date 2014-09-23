@@ -47,6 +47,8 @@
 
         company-mode
 
+        gnuplot-mode
+
         dockerfile-mode
 
         ;; ido addons
