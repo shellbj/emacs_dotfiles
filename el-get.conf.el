@@ -82,7 +82,7 @@
         jekyll-el
 
         ;; groovy
-        Emacs-Groovy-Mode
+        groovy-emacs-mode
 
         ;; ruby
         ;;         rspec-mode
