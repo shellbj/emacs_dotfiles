@@ -18,9 +18,10 @@
 
 ;; Locally curated defined inline
 (setq el-get-sources
-      '((:name eclim
-               :type github
-               :pkgname "shellbj/emacs-eclim")))
+      '(;; (:name eclim
+        ;;        :type github
+        ;;        :pkgname "shellbj/emacs-eclim")
+        ))
 
 ;; Use these recipes
 (el-get nil
