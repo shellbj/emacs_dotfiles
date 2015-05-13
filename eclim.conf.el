@@ -7,13 +7,24 @@
 (setq help-at-pt-timer-delay 0.1)
 (help-at-pt-set-timer)
 
+;; Yasnippet init if we have it
+(defun my-eclim-yasnippet-setup ()
+  (if (not (featurep 'yasnippet))
+        (require 'yasnippet "yasnippet" t))
+  (if (featurep 'yasnippet)
+      (yas-global-mode 1)))
+
+(add-hook 'global-eclim-mode-hook 'my-eclim-yasnippet-setup)
+
 ;; Configuring company-mode if present
-(eval-after-load 'company
-  '(if (not (featurep 'auto-complete))
-       (progn
-         (require 'company-emacs-eclim)
-         (company-emacs-eclim-setup)
-         (global-company-mode t))))
+(defun my-eclim-company-setup ()
+    (if (not (featurep 'auto-complete))
+        (progn
+          (require 'company-emacs-eclim)
+          (company-emacs-eclim-setup)
+          (global-company-mode t))))
+
+(add-hook 'global-eclim-mode-hook 'my-eclim-company-setup)
 
 ;; Configuring auto-complete-mode as a fall back
 (eval-after-load 'auto-complete
