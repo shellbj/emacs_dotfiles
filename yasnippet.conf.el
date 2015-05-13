@@ -4,10 +4,16 @@
      (list
       (list
        'quote
-       (list (concat el-get-dir
+       (list (concat (file-name-as-directory el-get-dir)
                      (file-name-as-directory "yasnippet")
                      "snippets")
-             (concat el-get-dir
+             (concat (file-name-as-directory el-get-dir)
                      (file-name-as-directory "yasnippet")
                      (file-name-as-directory "extras")
-                     "imported")))))
+                     "imported")
+             (concat (file-name-as-directory user-emacs-directory)
+                     "snippets")))))
+
+(yas-global-mode 1)
+
+(add-to-list 'auto-mode-alist '("snippets" . snippet-mode))

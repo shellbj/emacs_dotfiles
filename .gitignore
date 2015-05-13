@@ -46,3 +46,6 @@
 # generated autoloads from configuration files
 /autoloads.el
 /.python-environments/
+
+# yasnippet control files
+.yas-compiled-snippets.el
