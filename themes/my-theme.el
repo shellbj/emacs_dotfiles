@@ -101,6 +101,10 @@
    `(diff-refine-remove ((,class (:foreground ,fg :background ,red))))
    `(diff-refine-added ((,class (:foreground ,fg :background ,green))))
 
+   ;; ediff
+   `(ediff-current-diff-A ((,class (:background "green4" :foreground "white"))))
+   `(ediff-current-diff-B ((,class (:background "darkorange3" :foreground "white"))))
+
    ;; magit
    `(magit-item-highlight ((,class (:inherit nil))))
 
