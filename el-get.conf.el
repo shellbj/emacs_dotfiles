@@ -21,23 +21,50 @@
       '(;; (:name eclim
         ;;        :type github
         ;;        :pkgname "shellbj/emacs-eclim")
+
+        (:name pyenv-mode
+               :type github
+               :pkgname "proofit404/pyenv-mode"
+               :depends (pythonic))
+        (:name pyenv-mode-auto
+               :type github
+               :pkgname "ssbb/pyenv-mode-auto"
+               :depends (pyenv-mode s f))
+        (:name jdecomp
+               :type github
+               :pkgname "xiongtx/jdecomp")
         ))
+
+(el-get 'sync '(package))
+(el-get-bundle elpa:company)
+(el-get-bundle elpa:haskell-mode)
+
+;(el-get-bundle elpa:scala-mode)
+;(el-get-bundle elpa:sbt-mode)
+;(el-get-bundle elpa:ensime)
 
 ;; Use these recipes
 (el-get nil
         '(eclim
+          editorconfig
+
           auto-complete
 
+          exec-path-from-shell ; fix OS-X stupid shit
+
         magit
+        magithub
+
         git-gutter
         ;; gist
         yasnippet
+        yasnippet-snippets
         undo-tree
         diminish
         ibuffer-vc
         fill-column-indicator
 
-        company-mode
+        ;company
 
         gnuplot-mode
 
@@ -83,16 +110,19 @@
 
         ;; python
         ;; python-mode                     ; python.org mode
-        pyenv
+        pyenv-mode
+        pyenv-mode-auto
         ;;         pylookup
         ;;         python-pep8
         ;;         ropemacs
         ;;         virtualenv
         ;;         jinja2-mode
-        jedi
+        ;; jedi
+        anaconda-mode
+        company-anaconda
 
         ;; haskell
-        haskell-mode
+        ;haskell-mode
         ;;         haskell-mode-exts
 
         ;; clojure
@@ -105,5 +135,32 @@
         ;;         ;;ac-nrepl
 
         ;; scala
-        ;;         scala-mode
+        ;scala-mode
+;        ensime
+
+        ;; go
+        go-mode
+        go-company
+
+        ;; elixir
+        elixir
+
+        ;; web-mode
+        web-mode
+        company-web
+        emmet-mode
+
+        use-package
+
+        ;; typescript
+        tide
         ))
+
+;; (package-initialize)
+;; (when (not package-archive-contents)
+;;   (package-refresh-contents)
+;;   (package-install 'use-package))
+;; (require 'use-package)
+;; (use-package ensime
+;;   :ensure t
+;;   :pin melpa-stable)

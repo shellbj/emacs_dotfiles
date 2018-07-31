@@ -1,3 +1,6 @@
+;; Without this comment emacs25 adds (package-initialize) here
+;; (package-initialize)
+
 ;;; Generate autoloads for configuration
 (let ((generated-autoload-file (expand-file-name "autoloads.el" user-emacs-directory)))
   (update-directory-autoloads user-emacs-directory)
@@ -36,7 +39,6 @@
 (dolist (project (directory-files local-packages-dir t "\\w+"))
   (when (file-directory-p project)
     (add-to-list 'load-path project)))
-
 
 ;;; Packages that should always be loaded
 (require 'ido)
@@ -113,10 +115,15 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 ;; Hide the scroll bar, tool bar, and menu bar.
-(menu-bar-mode -1)
-(scroll-bar-mode -1)
-(horizontal-scroll-bar-mode -1)
-(tool-bar-mode -1)
+(unless (eq (window-system) 'mac)
+  (when (and (fboundp 'menu-bar-mode) (not (eq menu-bar-mode -1)))
+    (menu-bar-mode -1)))
+(when (and (fboundp 'scroll-bar-mode) (not (eq scroll-bar-mode -1)))
+    (scroll-bar-mode -1))
+(if (boundp 'horizontal-scroll-bar-mode)
+    (horizontal-scroll-bar-mode -1))
+(when (and (fboundp 'tool-bar-mode) (not (eq tool-bar-mode -1)))
+  (tool-bar-mode -1))
 
 ;; No Rudolf to light my way
 (blink-cursor-mode -1)

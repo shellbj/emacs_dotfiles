@@ -1,4 +1,4 @@
 ;;;###autoload
-(add-hook 'python-mode-hook 'jedi:setup)
+;(add-hook 'python-mode-hook 'jedi:setup)
 
-(setq jedi:complete-on-dot t)
+;(setq jedi:complete-on-dot t)

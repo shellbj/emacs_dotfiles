@@ -7,6 +7,16 @@
 (setq help-at-pt-timer-delay 0.1)
 (help-at-pt-set-timer)
 
+;; make debugging work
+(defun toggle-maximize-buffer ()
+ "Maximize buffer"
+  (interactive)
+  (if (= 1 (length (window-list)))
+    (jump-to-register '_)
+    (progn
+      (set-register '_ (list (current-window-configuration)))
+      (delete-other-windows))))
+
 ;; Yasnippet init if we have it
 (defun my-eclim-yasnippet-setup ()
   (if (not (featurep 'yasnippet))

@@ -16,5 +16,8 @@
       magit-repo-dirs-depth 2)
 
 ;; Diminish mode-line noise if available
-(if (fboundp 'diminish)
-    (diminish 'magit-auto-revert-mode))
+;; (if (fboundp 'diminish)
+;;     (diminish 'magit-auto-revert-mode))
+
+;; (if (not (featurep 'magithub))
+;;     (require 'magithub "magithub" t))

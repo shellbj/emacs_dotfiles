@@ -1,0 +1,4 @@
+(:name scala-mode
+       :description "The definitive scala-mode for emacs"
+       :type elpa
+       :website "http://ensime.org")
